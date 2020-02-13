@@ -6,6 +6,8 @@ import xml.etree.ElementTree as ET
 def adjust_type(cid):
     if 1011 <= cid and cid <= 1058: # Greek
         return 'c'
+    if cid == 16222: # ς AJ1 CID+16222 U+03C2 GREEK SMALL LETTER FINAL SIGMA
+        return 'c'
     if 1059 <= cid and cid <= 1124: # Cyrillic
         return 'c'
     if cid == 647: # ¨ AJ1 CID+647 U+00A8 'DIAERESIS'
@@ -32,8 +34,16 @@ def adjust_type(cid):
         return 'c'
     if cid == 693: # − AJ1 CID+693 U+2212 'MINUS SIGN'
         return 'c'
-    if cid == 16270: # ✓ AJ1 CID+16270 U+2713 'CHECK MARK'#
+    if cid == 16270: # ✓ AJ1 CID+16270 U+2713 'CHECK MARK'
         return 'c'
+    if cid == 16328: # AJ1 CID+16328 U+20DD 'COMBINING ENCLOSING CIRCLE'
+        return 'r'
+    if cid == 11035: # AJ1 CID+11035 U+20DE 'COMBINING ENCLOSING SQUARE' 
+        return 'r'
+    if cid == 16326: # AJ1 CID+16326 U+3099 'COMBINING KATAKANA-HIRAGANA VOICED SOUND MARK'
+        return 'r'
+    if cid == 16327: # AJ1 CID+16327 U+309A 'COMBINING KATAKANA-HIRAGANA SEMI-VOICED SOUND MARK'
+        return 'r'
     return ''
 
 def adjust(cid, name, source_width, output_width):
